@@ -1,14 +1,23 @@
 const HttpError = require('./HttpError');
 const handleMongooseError = require('./handleMongooseError');
 const ctrlWrapper = require('./ctrlWrapper');
+const createResponse = require('./createResponse');
+const sendVerificationEmail = require('./sendVerificationEmail');
 
-const { generateToken, validateToken } = require('./tokenHandlers');
+const {
+  generateTokens,
+  validateAccessToken,
+  validateRefreshToken,
+} = require('./tokenHandlers');
 module.exports = {
   HttpError,
   handleMongooseError,
-  generateToken,
-  validateToken,
+  generateTokens,
+  validateAccessToken,
+  validateRefreshToken,
   ctrlWrapper,
+  createResponse,
+  sendVerificationEmail,
 };
 
 export {};

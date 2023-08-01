@@ -27,7 +27,7 @@ const userSchema = new Schema(
       required: true,
     },
 
-    accesToken: {
+    accessToken: {
       type: String,
       default: '',
     },
@@ -38,7 +38,12 @@ const userSchema = new Schema(
     verify: {
       type: Boolean,
       default: false,
-    },verificationCode: {
+    },
+    verificationCode: {
+      type: String,
+      default: '',
+    },
+    avatarURL: {
       type: String,
       default: '',
     },
@@ -49,12 +54,41 @@ const userSchema = new Schema(
 const registerJoiSchema = Joi.object({
   userName: Joi.string()
     .pattern(
-
       userNameRegexp,
       'Username can contain only letters, numbers and underscores'
     )
     .required(),
   email: Joi.string().pattern(emailRegexp, 'Invalid email').required(),
+  password: Joi.string()
+    .pattern(
+      passwordRegexp,
+      'Password should contain at least 1 capital letter, 1 normal letter and 1 number'
+    )
+    .required(),
+});
+const loginJoiSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp, 'Invalid email').required(),
+  password: Joi.string()
+    .pattern(
+      passwordRegexp,
+      'Password should contain at least 1 capital letter, 1 normal letter and 1 number'
+    )
+    .required(),
+});
+
+const userNameJoiSchema = Joi.object({
+  userName: Joi.string()
+    .pattern(
+      userNameRegexp,
+      'Username can contain only letters, numbers and underscores'
+    )
+    .required(),
+});
+const emailJoiSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp, 'Invalid email').required(),
+});
+
+const passwordJoiSchema = Joi.object({
   password: Joi.string()
     .pattern(
       passwordRegexp,
@@ -69,9 +103,12 @@ const User = model('user', userSchema);
 module.exports = {
   User,
   registerJoiSchema,
-  // loginJoiSchema,
+  loginJoiSchema,
   // updateUserJoiSchema,
-  // emailJoiSchema,
+  userNameJoiSchema,
+  passwordJoiSchema,
+
+  emailJoiSchema,
 };
 
 export {};
