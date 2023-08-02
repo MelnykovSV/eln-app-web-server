@@ -95,3 +95,4 @@ const loginTests = test('login tests', async () => {
 });
 
 module.exports = loginTests;
+export {};

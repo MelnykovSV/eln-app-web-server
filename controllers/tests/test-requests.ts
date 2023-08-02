@@ -83,8 +83,11 @@ const register = {
   },
 };
 
+const accessToken = '1111111111111111111111111111';
+
 module.exports = {
   login,
   register,
+  accessToken,
 };
 export {};

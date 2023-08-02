@@ -4,6 +4,8 @@ const mongoDB = require('./../../server');
 
 const loginTests = require('./loginUserTests');
 const registerTests = require('./registerUserTests');
+const logoutTests = require('./logoutUserTests');
+const currentUserTests = require('./currentUserTests');
 
 describe('', () => {
   beforeAll(() => {
@@ -14,6 +16,8 @@ describe('', () => {
   });
   loginTests;
   registerTests;
+  logoutTests;
+  currentUserTests;
 });
 
 export {};
