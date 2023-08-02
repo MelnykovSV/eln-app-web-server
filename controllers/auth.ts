@@ -48,13 +48,16 @@ const registerUser = async (req: Express.Request, res: Express.Response) => {
 
   const data = {
     accessToken,
-    refreshToken,
     user: {
       userName,
       email,
       avatarURL,
     },
   };
+  res.cookie('refreshToken', refreshToken, {
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  });
   createResponse(res, 201, 'New user created', data);
 };
 
@@ -192,20 +195,17 @@ const changeUserEmail = async (
   if (error) {
     throw HttpError(400, 'Invalid user name');
   }
+  const verificationCode = await sendVerificationEmail(newEmail, true);
 
   const { userName, email, avatarURL } = await User.findByIdAndUpdate(
     _id,
     {
-      email: newEmail,
+      verificationCode,
     },
     { new: true }
   );
 
-  createResponse(res, 200, 'User email updated succesfuly', {
-    userName,
-    email,
-    avatarURL,
-  });
+  createResponse(res, 200, 'Verification link was sent to your new email');
 };
 const changeUserPassword = async (
   req: IExtendedRequest,
@@ -254,6 +254,24 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
   createResponse(res, 200, 'Email verified');
 };
 
+const confirmEmailChange = async (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  const { verificationCode, email } = req.params;
+
+  const user = await User.findOne({ verificationCode });
+  if (!user) {
+    throw HttpError(404, 'Email not found or verification code is outdated');
+  }
+  await User.findByIdAndUpdate(user._id, {
+    email,
+    verificationCode: '',
+  });
+
+  createResponse(res, 200, 'Email successfuly changed');
+};
+
 const resendEmail = async (req: Express.Request, res: Express.Response) => {
   const { email } = req.body;
 
@@ -280,6 +298,7 @@ module.exports = {
   changeUserEmail: ctrlWrapper(changeUserEmail),
   changeUserPassword: ctrlWrapper(changeUserPassword),
   updateAvatar: ctrlWrapper(updateAvatar),
+  confirmEmailChange: ctrlWrapper(confirmEmailChange),
 };
 
 export {};

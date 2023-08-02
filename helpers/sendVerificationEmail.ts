@@ -4,8 +4,20 @@ require('dotenv').config();
 const { SENDGRID_API_KEY, BASE_URL } = process.env;
 sgMail.setApiKey(SENDGRID_API_KEY);
 
-const sendVerificationEmail = async (email: string) => {
+const sendVerificationEmail = async (email: string, changeEmail = false) => {
   const verificationCode = nanoid();
+  console.log(changeEmail);
+  if (changeEmail) {
+    const verifyEmail = {
+      to: email,
+      subject: 'Verify email',
+      html: `<a target="_blank" href="${BASE_URL}/api/auth/changeEmail/${email}/${verificationCode}">Click to verify email</a>`,
+    };
+    const letter = { ...verifyEmail, from: 'melnykov8515@gmail.com' };
+    await sgMail.send(letter);
+
+    return verificationCode;
+  }
   const verifyEmail = {
     to: email,
     subject: 'Verify email',

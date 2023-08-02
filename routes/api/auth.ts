@@ -22,11 +22,16 @@ const {
   updateAvatar,
   verifyEmail,
   resendEmail,
+  confirmEmailChange,
 } = require('./../../controllers/auth');
 
 authRouter.post('/register', validateBody(registerJoiSchema), registerUser);
 authRouter.post('/login', validateBody(loginJoiSchema), loginUser);
 authRouter.get('/verify/:verificationCode', verifyEmail);
+authRouter.get(
+  '/changeEmail/:email/:verificationCode',
+  confirmEmailChange
+);
 authRouter.post('/verify', validateBody(emailJoiSchema), resendEmail);
 authRouter.post('/logout', authenticate, logoutUser);
 authRouter.get('/current', authenticate, getCurrentUser);
