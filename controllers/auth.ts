@@ -25,9 +25,13 @@ const {
 
 const registerUser = async (req: Express.Request, res: Express.Response) => {
   const { email, password, userName } = req.body;
-  const user = await User.findOne({ email });
-  if (user) {
+  const isEmailInUse = await User.findOne({ email });
+  if (isEmailInUse) {
     throw HttpError(409, 'Email already in use');
+  }
+  const isUserNameInUse = await User.findOne({ userName });
+  if (isUserNameInUse) {
+    throw HttpError(409, 'User name already in use');
   }
 
   const verificationCode = await sendVerificationEmail(email);
@@ -99,7 +103,7 @@ const loginUser = async (req: Express.Request, res: Express.Response) => {
     maxAge: 30 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   });
-  createResponse(res, 201, 'Login successful', data);
+  createResponse(res, 200, 'Login successful', data);
 };
 
 const logoutUser = async (req: IExtendedRequest, res: Express.Response) => {

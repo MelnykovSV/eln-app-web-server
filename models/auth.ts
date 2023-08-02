@@ -64,16 +64,13 @@ const registerJoiSchema = Joi.object({
       passwordRegexp,
       'Password should contain at least 1 capital letter, 1 normal letter and 1 number'
     )
-    .required(),
+    .required().messages({
+      
+    }),
 });
 const loginJoiSchema = Joi.object({
-  email: Joi.string().pattern(emailRegexp, 'Invalid email').required(),
-  password: Joi.string()
-    .pattern(
-      passwordRegexp,
-      'Password should contain at least 1 capital letter, 1 normal letter and 1 number'
-    )
-    .required(),
+  email: Joi.string().required(),
+  password: Joi.string().required(),
 });
 
 const userNameJoiSchema = Joi.object({
