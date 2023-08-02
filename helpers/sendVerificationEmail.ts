@@ -6,7 +6,6 @@ sgMail.setApiKey(SENDGRID_API_KEY);
 
 const sendVerificationEmail = async (email: string, changeEmail = false) => {
   const verificationCode = nanoid();
-  console.log(changeEmail);
   if (changeEmail) {
     const verifyEmail = {
       to: email,
