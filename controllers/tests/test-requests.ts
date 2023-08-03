@@ -94,6 +94,47 @@ const resendEmail = {
     email: 'test@mail.com',
   },
 };
+const changeUserName = {
+  reqGood: {
+    userName: 'test_change_userName_1',
+  },
+  reqUnauthorized: {
+    userName: 'test_change_userName_2',
+  },
+  reqUserNameTaken: {
+    userName: 'test',
+  },
+  reqUserNameInvalid: {
+    userName: 'test_change_userName_^',
+  },
+};
+
+const changeEmail = {
+  reqGood: {
+    email: 'test_change_email_1@mail.com',
+  },
+  reqUnauthorized: {
+    email: 'test_change_email_2@mail.com',
+  },
+  reqEmailTaken: {
+    email: 'test@mail.com',
+  },
+  reqEmailInvalid: {
+    email: 'test_change_email_4mail.com',
+  },
+};
+
+const changePassword = {
+  reqGood: {
+    password: 'Aa222222',
+  },
+  reqUnauthorized: {
+    password: 'Aa333333',
+  },
+  reqPasswordInvalid: {
+    password: '55555555',
+  },
+};
 
 const logoutAccessToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNmE5NDBkZTY0M2JjZjc0NTlmZCIsImlhdCI6MTY5MTAyNzExM30.PkbsM_aSJ535UsWEw8E2g6KdswibwiORcjzFBYKEa9Y';
@@ -104,6 +145,11 @@ const currentAccessToken =
 const currentRefreshToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNzg4OTUyMzI4ODgzZmFiNzhhMCIsImlhdCI6MTY5MTAyNzMzNn0.N7FY5GIpcaIljrJ9EJPKpQD4RYCdhFaAbz4iWbumqRU';
 
+const changeAccessToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2I5M2FhNDY4YzRkYzcwYTk4ZmQ5OSIsImlhdCI6MTY5MTA2MzMwOH0.TmDKwqtIE8swAu41w5aqQt2TK_mOSzAXVoH1egrIApk';
+const changeRefreshToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2I5M2FhNDY4YzRkYzcwYTk4ZmQ5OSIsImlhdCI6MTY5MTA2MzMwOH0.9BgyRSKlHuJkmSfr0vC4oyk-9PDInH4pOE_qOkELAVs';
+
 module.exports = {
   login,
   register,
@@ -112,5 +158,10 @@ module.exports = {
   logoutRefreshToken,
   currentAccessToken,
   currentRefreshToken,
+  changeUserName,
+  changeEmail,
+  changePassword,
+  changeAccessToken,
+  changeRefreshToken,
 };
 export {};

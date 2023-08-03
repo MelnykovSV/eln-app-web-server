@@ -160,7 +160,7 @@ const changeUserName = async (req: IExtendedRequest, res: Express.Response) => {
   const isUserNameTaken = await User.findOne({ userName: newUserName });
 
   if (isUserNameTaken) {
-    throw HttpError(400, 'This user name is already taken');
+    throw HttpError(409, 'This user name is already taken');
   }
 
   const { error } = userNameJoiSchema.validate({ userName: newUserName });
@@ -198,7 +198,7 @@ const changeUserEmail = async (
   const isEmailTaken = await User.findOne({ email: newEmail });
 
   if (isEmailTaken) {
-    throw HttpError(400, 'This email is already taken');
+    throw HttpError(409, 'This email is already taken');
   }
   const { error } = emailJoiSchema.validate({ email: newEmail });
   if (error) {
@@ -300,17 +300,17 @@ const resendEmail = async (req: Express.Request, res: Express.Response) => {
 };
 
 module.exports = {
-  registerUser: ctrlWrapper(registerUser),
-  loginUser: ctrlWrapper(loginUser),
-  verifyEmail: ctrlWrapper(verifyEmail),
-  resendEmail: ctrlWrapper(resendEmail),
-  logoutUser: ctrlWrapper(logoutUser),
-  getCurrentUser: ctrlWrapper(getCurrentUser),
+  registerUser: ctrlWrapper(registerUser), // +
+  loginUser: ctrlWrapper(loginUser), // +
+  verifyEmail: ctrlWrapper(verifyEmail), // +
+  resendEmail: ctrlWrapper(resendEmail), // +
+  logoutUser: ctrlWrapper(logoutUser), // +
+  getCurrentUser: ctrlWrapper(getCurrentUser), // +
   changeUserName: ctrlWrapper(changeUserName),
   changeUserEmail: ctrlWrapper(changeUserEmail),
   changeUserPassword: ctrlWrapper(changeUserPassword),
   updateAvatar: ctrlWrapper(updateAvatar),
-  confirmEmailChange: ctrlWrapper(confirmEmailChange),
+  confirmEmailChange: ctrlWrapper(confirmEmailChange), // +
 };
 
 export {};

@@ -169,5 +169,24 @@
     "updatedAt": {
       "$date": "2023-08-03T09:44:30.085Z"
     }
+  },
+  {
+    "_id": {
+      "$oid": "64cb93aa468c4dc70a98fd99"
+    },
+    "userName": "test_change_userName",
+    "email": "test_change_userName@mail.com",
+    "password": "$2b$10$/UG1BW.EAQ9ME4JTy1pxSeClhdU3MZ7t9hmIJ9F4yKlpCKTBentUq",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2I5M2FhNDY4YzRkYzcwYTk4ZmQ5OSIsImlhdCI6MTY5MTA2MzMwOH0.TmDKwqtIE8swAu41w5aqQt2TK_mOSzAXVoH1egrIApk",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2I5M2FhNDY4YzRkYzcwYTk4ZmQ5OSIsImlhdCI6MTY5MTA2MzMwOH0.9BgyRSKlHuJkmSfr0vC4oyk-9PDInH4pOE_qOkELAVs",
+    "verify": true,
+    "verificationCode": "",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T11:46:50.488Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T11:48:28.199Z"
+    }
   }
 ]
