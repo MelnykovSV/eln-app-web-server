@@ -11,6 +11,7 @@ const {
   validateBody,
   authenticate,
   upload,
+  authenticateRefresh,
 } = require('./../../middlewares/index');
 
 const {
@@ -25,6 +26,7 @@ const {
   verifyEmail,
   resendEmail,
   confirmEmailChange,
+  refresh,
 } = require('./../../controllers/auth');
 
 authRouter.post('/register', validateBody(registerJoiSchema), registerUser);
@@ -58,6 +60,6 @@ authRouter.patch(
   upload.single('avatar'),
   updateAvatar
 );
-
+authRouter.post('/refresh', authenticateRefresh, refresh);
 module.exports = authRouter;
 export {};

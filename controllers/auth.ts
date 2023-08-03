@@ -12,6 +12,7 @@ const {
   sendVerificationEmail,
   generateTokens,
   createResponse,
+  validateRefreshToken,
 } = require('../helpers/index');
 const {
   User,
@@ -311,6 +312,24 @@ const resendEmail = async (req: Express.Request, res: Express.Response) => {
   createResponse(res, 200, 'Verification link has been sent to you email');
 };
 
+const refresh = async (req: IExtendedRequest, res: Express.Response) => {
+  const { _id } = req.user;
+  const { accessToken, refreshToken } = generateTokens(_id);
+
+  await User.findByIdAndUpdate(_id, { accessToken, refreshToken });
+
+  res.cookie('refreshToken', refreshToken, {
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  });
+
+  const data = {
+    accessToken,
+  };
+
+  createResponse(res, 200, 'Tokens refreshed', data);
+};
+
 module.exports = {
   registerUser: ctrlWrapper(registerUser), // +
   loginUser: ctrlWrapper(loginUser), // +
@@ -321,8 +340,9 @@ module.exports = {
   changeUserName: ctrlWrapper(changeUserName), // +
   changeUserEmail: ctrlWrapper(changeUserEmail), // +
   changeUserPassword: ctrlWrapper(changeUserPassword), // +
-  updateAvatar: ctrlWrapper(updateAvatar),
+  updateAvatar: ctrlWrapper(updateAvatar), // +
   confirmEmailChange: ctrlWrapper(confirmEmailChange), // +
+  refresh: ctrlWrapper(refresh),
 };
 
 export {};
