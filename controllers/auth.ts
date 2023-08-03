@@ -43,15 +43,15 @@ const registerUser = async (req: Express.Request, res: Express.Response) => {
     verificationCode,
   });
 
-  const { accessToken, refreshToken } = generateTokens(_id);
+  // const { accessToken, refreshToken } = generateTokens(_id);
 
-  await User.findByIdAndUpdate(_id, {
-    accessToken,
-    refreshToken,
-  });
+  // await User.findByIdAndUpdate(_id, {
+  //   accessToken,
+  //   refreshToken,
+  // });
 
   const data = {
-    accessToken,
+    // accessToken,
     user: {
       userName,
       email,
@@ -59,10 +59,10 @@ const registerUser = async (req: Express.Request, res: Express.Response) => {
     },
   };
 
-  res.cookie('refreshToken', refreshToken, {
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-  });
+  // res.cookie('refreshToken', refreshToken, {
+  //   maxAge: 30 * 24 * 60 * 60 * 1000,
+  //   httpOnly: true,
+  // });
   createResponse(res, 201, 'New user created', data);
 };
 
@@ -286,7 +286,10 @@ const resendEmail = async (req: Express.Request, res: Express.Response) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw HttpError(404, 'Email not found or verification code is outdated');
+    throw HttpError(404, 'Email not found');
+  }
+  if (user.verify) {
+    throw HttpError(400, 'Email is already verified');
   }
 
   const verificationCode = await sendVerificationEmail(email);

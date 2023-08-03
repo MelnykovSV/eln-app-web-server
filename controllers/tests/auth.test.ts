@@ -3,6 +3,9 @@ const registerTests = require('./registerUserTests');
 const loginTests = require('./loginUserTests');
 const logoutTests = require('./logoutUserTests');
 const currentUserTests = require('./currentUserTests');
+const verifyEmailTests = require('./verifyEmailTests');
+const confirmEmailChangeTests = require('./confirmEmailChangeTests');
+const resendEmailTests = require('./resendEmailTests');
 
 describe('', () => {
   beforeAll(() => {
@@ -15,6 +18,9 @@ describe('', () => {
   loginTests();
   logoutTests();
   currentUserTests();
+  verifyEmailTests();
+  confirmEmailChangeTests();
+  resendEmailTests();
 });
 
 export {};

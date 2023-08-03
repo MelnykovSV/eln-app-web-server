@@ -22,7 +22,6 @@ const registerTests = () => {
       .post('/api/auth/register')
       .send(reqGood);
     expect(response.statusCode).toBe(201);
-    expect(typeof response.body.data.accessToken).toBe('string');
     expect(response.body.data.user.userName).toBe('test_new');
     expect(response.body.data.user.email).toBe('test_new@mail.com');
     expect(response.body.data.user.avatarURL).toBe('');

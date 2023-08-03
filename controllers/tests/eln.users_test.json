@@ -1,0 +1,173 @@
+[
+  {
+    "_id": {
+      "$oid": "64ca648c06cc098a773ce1e2"
+    },
+    "userName": "test_unauthorized",
+    "email": "test_unauthorized@mail.com",
+    "password": "$2b$10$HWI1c2s0V94vzX9G4uAXR.QPCNbADkPc0pBva30t8nbAZAlsHI.Fu",
+    "accessToken": "",
+    "refreshToken": "",
+    "verify": true,
+    "verificationCode": "",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-02T14:13:32.102Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-02T14:13:32.158Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64ca650306cc098a773ce1ea"
+    },
+    "userName": "test",
+    "email": "test@mail.com",
+    "password": "$2b$10$AWPcyw2VWKB2offLDGyd9u50FZSfWFZInlnUrkUupmnFMZeZReaRu",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2E2NTAzMDZjYzA5OGE3NzNjZTFlYSIsImlhdCI6MTY5MTAyODE3MH0.E7WY8Rcw5xM6u4FE0j0f-WgpGn1O8jyLjMAAAG0bUuQ",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2E2NTAzMDZjYzA5OGE3NzNjZTFlYSIsImlhdCI6MTY5MTAyODE3MH0.bzvav1byVF_uAwaDELO2m35hhwjX9iBlkySx8G12hXo",
+    "verify": true,
+    "verificationCode": "",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-02T14:15:31.757Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T02:02:50.249Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64ca657106cc098a773ce1ee"
+    },
+    "userName": "test_with_avatar",
+    "email": "test_with_avatar@mail.com",
+    "password": "$2b$10$UzHU91udEC.EPDmNl.mSdODVWkpyaRWZB0KxnLdqOYODOVcQCI.B6",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2E2NTcxMDZjYzA5OGE3NzNjZTFlZSIsImlhdCI6MTY5MDk4NTg0MX0.7jjrZF6_Sp2pt3b2tknZrutIYGphkoagYqYtXRnH0ts",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2E2NTcxMDZjYzA5OGE3NzNjZTFlZSIsImlhdCI6MTY5MDk4NTg0MX0._Xm2YpRb0UsEzNLxBGsvAAGDqWaeTb7mbEUuH-FAHdg",
+    "verify": true,
+    "verificationCode": "",
+    "avatarURL": "avatars\\64ca657106cc098a773ce1ee_tree.jpg",
+    "createdAt": {
+      "$date": "2023-08-02T14:17:21.355Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-02T14:18:55.428Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64cb06a940de643bcf7459fd"
+    },
+    "userName": "test_logout",
+    "email": "test_logout@mail.com",
+    "password": "$2b$10$mQo1bd/Wt3V/qjvv/5aQqu10.ZDdA3U2pptijql5bXy9o41y8hPlC",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNmE5NDBkZTY0M2JjZjc0NTlmZCIsImlhdCI6MTY5MTAyNzExM30.PkbsM_aSJ535UsWEw8E2g6KdswibwiORcjzFBYKEa9Y",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNmE5NDBkZTY0M2JjZjc0NTlmZCIsImlhdCI6MTY5MTAyNzExM30.5WeYrQKh4y-CQPNDpFG8_jWm5uDtFpHQg2hP00guFKE",
+    "verify": true,
+    "verificationCode": "",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T01:45:13.343Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T02:02:50.923Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64cb0788952328883fab78a0"
+    },
+    "userName": "test_current",
+    "email": "test_current@mail.com",
+    "password": "$2b$10$pniDAMaHsJmjf3bERsW9LOgwcOPr.x4cKLB8nSnzw1qJ5uJfxEdTK",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNzg4OTUyMzI4ODgzZmFiNzhhMCIsImlhdCI6MTY5MTAyNzMzNn0.RIeRIUlRnxvzfhqiluXt2zKU7V-BDKOcmp5F5xcZMsE",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNzg4OTUyMzI4ODgzZmFiNzhhMCIsImlhdCI6MTY5MTAyNzMzNn0.N7FY5GIpcaIljrJ9EJPKpQD4RYCdhFaAbz4iWbumqRU",
+    "verify": false,
+    "verificationCode": "BV7bbBAq-6PlIwHcI31F7",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T01:48:56.488Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T01:48:56.559Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64cb5f992beeb6af0402f2d8"
+    },
+    "userName": "test_unverified",
+    "email": "test_unverified@mail.com",
+    "password": "$2b$10$ZU4uoMP91eboRXvjVsF5F.1EHaqiubkvwHgzGU4q386PUkncq8q8q",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2I1Zjk5MmJlZWI2YWYwNDAyZjJkOCIsImlhdCI6MTY5MTA0OTg4MX0.1i8A1ihezS6FKkI8Ofl_wablQeLzUdjq_dzu2-e6Cyc",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2I1Zjk5MmJlZWI2YWYwNDAyZjJkOCIsImlhdCI6MTY5MTA0OTg4MX0.TQBAptWeIfZIX-dZu8_QtQypXzO2o0G_FA0ks-iCYa8",
+    "verify": false,
+    "verificationCode": "4nEcsAeyInOGM3olmjl5q",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T08:04:41.450Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T08:04:41.527Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64cb6b34b9cf3a16433c096d"
+    },
+    "userName": "test_verify",
+    "email": "test_verify@mail.com",
+    "password": "$2b$10$6Na8VukChoIobWH3aewYle/9UkbOMKdCAwa8/9Ibznu2ofzDSeiwi",
+    "accessToken": "",
+    "refreshToken": "",
+    "verify": false,
+    "verificationCode": "ayoq6uiOTMwPEG4sO12RG",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T08:54:12.505Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T09:04:37.828Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64cb7153be208a6eb4eaa07d"
+    },
+    "userName": "test_confirm_email_change",
+    "email": "test_confirm_email_change@mail.com",
+    "password": "$2b$10$aznWy30qQlQiBGlEXLdsjeoiAOSMnUutlJFZ//ggvf/1nAbYAPiGG",
+    "accessToken": "",
+    "refreshToken": "",
+    "verify": true,
+    "verificationCode": "jyYE5xbr7E35naOM8ki3D",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T09:20:19.990Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T09:20:19.990Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "64cb76fed2f5d315ed599de3"
+    },
+    "userName": "test_resend_email",
+    "email": "test_resend_email@mail.com",
+    "password": "$2b$10$iyDeQhLQIrS/8N08Virvn.Nkwv0OmRGYy0g7LyJ/d6GmgN5uPXTAm",
+    "accessToken": "",
+    "refreshToken": "",
+    "verify": false,
+    "verificationCode": "5QOHSbs6TlGa54GHHsjM5",
+    "avatarURL": "",
+    "createdAt": {
+      "$date": "2023-08-03T09:44:30.085Z"
+    },
+    "updatedAt": {
+      "$date": "2023-08-03T09:44:30.085Z"
+    }
+  }
+]

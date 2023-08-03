@@ -83,6 +83,18 @@ const register = {
   },
 };
 
+const resendEmail = {
+  reqGood: {
+    email: 'test_resend_email@mail.com',
+  },
+  reqWrongEmail: {
+    email: 'test_resend_email21312214@mail.com',
+  },
+  reqAlreadyVerified: {
+    email: 'test@mail.com',
+  },
+};
+
 const logoutAccessToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNmE5NDBkZTY0M2JjZjc0NTlmZCIsImlhdCI6MTY5MTAyNzExM30.PkbsM_aSJ535UsWEw8E2g6KdswibwiORcjzFBYKEa9Y';
 const logoutRefreshToken =
@@ -95,6 +107,7 @@ const currentRefreshToken =
 module.exports = {
   login,
   register,
+  resendEmail,
   logoutAccessToken,
   logoutRefreshToken,
   currentAccessToken,
