@@ -40,13 +40,13 @@ const register = {
   },
 
   reqEmailTaken: {
-    userName: 'test_new1',
+    userName: 'test_new15345435',
     email: 'test@mail.com',
     password: 'Aa111111',
   },
   reqUserNameTaken: {
     userName: 'test',
-    email: 'test_new1@mail.com',
+    email: 'test_new1345345345345@mail.com',
     password: 'Aa111111',
   },
 
@@ -83,11 +83,21 @@ const register = {
   },
 };
 
-const accessToken = '1111111111111111111111111111';
+const logoutAccessToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNmE5NDBkZTY0M2JjZjc0NTlmZCIsImlhdCI6MTY5MTAyNzExM30.PkbsM_aSJ535UsWEw8E2g6KdswibwiORcjzFBYKEa9Y';
+const logoutRefreshToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNmE5NDBkZTY0M2JjZjc0NTlmZCIsImlhdCI6MTY5MTAyNzExM30.5WeYrQKh4y-CQPNDpFG8_jWm5uDtFpHQg2hP00guFKE';
+const currentAccessToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNzg4OTUyMzI4ODgzZmFiNzhhMCIsImlhdCI6MTY5MTAyNzMzNn0.RIeRIUlRnxvzfhqiluXt2zKU7V-BDKOcmp5F5xcZMsE';
+const currentRefreshToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2IwNzg4OTUyMzI4ODgzZmFiNzhhMCIsImlhdCI6MTY5MTAyNzMzNn0.N7FY5GIpcaIljrJ9EJPKpQD4RYCdhFaAbz4iWbumqRU';
 
 module.exports = {
   login,
   register,
-  accessToken,
+  logoutAccessToken,
+  logoutRefreshToken,
+  currentAccessToken,
+  currentRefreshToken,
 };
 export {};

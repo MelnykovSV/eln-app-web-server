@@ -15,7 +15,7 @@ const {
   },
 } = require('./test-requests');
 
-const loginTests = test('login tests', async () => {
+const loginTests = () => {
   test('Should have status-code 200', async () => {
     const response = await request(app).post('/api/auth/login').send(reqGood);
     expect(response.statusCode).toBe(200);
@@ -92,7 +92,7 @@ const loginTests = test('login tests', async () => {
     expect(response.statusCode).toBe(401);
     expect(response.body.message).toBe('Email or password invalid');
   });
-});
+};
 
 module.exports = loginTests;
 export {};

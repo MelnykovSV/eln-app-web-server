@@ -16,7 +16,7 @@ const {
   },
 } = require('./test-requests');
 
-const registerTests = test('login tests', async () => {
+const registerTests = () => {
   test('Should have status-code 201, accessToken as string and contain exactly 3 fields in user: userName, email and avatarURL', async () => {
     const response = await request(app)
       .post('/api/auth/register')
@@ -103,7 +103,7 @@ const registerTests = test('login tests', async () => {
       'Password should contain at least 1 capital letter, 1 normal letter and 1 number'
     );
   });
-});
+};
 
 module.exports = registerTests;
 export {};
