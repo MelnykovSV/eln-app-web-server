@@ -9,6 +9,7 @@ const resendEmailTests = require('./resendEmailTests');
 const changeUserNameTests = require('./changeUserNameTests');
 const changeEmailTests = require('./changeEmailTests');
 const changePasswordTests = require('./changePasswordTests');
+const changeAvatarTests = require('./changeAvatarTests');
 
 describe('', () => {
   beforeAll(() => {
@@ -27,6 +28,7 @@ describe('', () => {
   changeUserNameTests();
   changeEmailTests();
   changePasswordTests();
+  changeAvatarTests();
 });
 
 export {};
