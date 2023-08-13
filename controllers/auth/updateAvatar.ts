@@ -3,7 +3,7 @@ import { IExtendedRequest } from '../../types';
 const fs = require('fs/promises');
 const path = require('path');
 const Jimp = require('jimp');
-const avatarsDir = path.join(__dirname, '../', 'public/', 'avatars');
+const avatarsDir = path.join(__dirname, '../', '../', 'public/', 'avatars');
 const { HttpError, createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');
 
