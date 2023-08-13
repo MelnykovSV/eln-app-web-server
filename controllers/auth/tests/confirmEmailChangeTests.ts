@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./../../app');
+const app = require('../../../app');
 
 const confirmEmailChangeTests = () => {
   test('Should have status-code 200', async () => {

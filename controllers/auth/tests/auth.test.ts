@@ -1,4 +1,4 @@
-const mongoDB = require('./../../server');
+const mongoDB = require('./../../../server');
 const registerTests = require('./registerUserTests');
 const loginTests = require('./loginUserTests');
 const logoutTests = require('./logoutUserTests');

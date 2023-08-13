@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./../../app');
+const app = require('../../../app');
 // const fs = require('fs/promises');
 const fs = require('fs');
 

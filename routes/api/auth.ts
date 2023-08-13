@@ -27,7 +27,7 @@ const {
   resendEmail,
   confirmEmailChange,
   refresh,
-} = require('./../../controllers/auth');
+} = require('./../../controllers/auth/index');
 
 authRouter.post('/register', validateBody(registerJoiSchema), registerUser);
 authRouter.post('/login', validateBody(loginJoiSchema), loginUser);
