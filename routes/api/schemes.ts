@@ -7,6 +7,9 @@ const {
   getSchemes,
   getSingleScheme,
   updateScheme,
+  updateAttempt,
+  updateStage,
+  addAttempt,
 } = require('./../../controllers/schemes/index');
 const {
   validateBody,
@@ -19,6 +22,9 @@ schemesRouter.get('/:schemeId', authenticate, getSingleScheme);
 schemesRouter.post('/', authenticate, createNewScheme);
 schemesRouter.put('/', authenticate, updateScheme);
 schemesRouter.delete('/', authenticate, deleteScheme);
+schemesRouter.post('/updateAttempt/:attemptId', authenticate, updateAttempt);
+schemesRouter.post('/updateStage/:stageId', authenticate, updateStage);
+schemesRouter.post('/addAttempt/:stageId', authenticate, addAttempt);
 
 module.exports = schemesRouter;
 export {};

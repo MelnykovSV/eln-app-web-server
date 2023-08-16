@@ -25,7 +25,7 @@ const attemptSchema = new Schema(
       type: String,
       default: '',
     },
-    yield: {
+    _yield: {
       type: Number,
       default: 0,
     },
@@ -91,9 +91,9 @@ const stageSchema = new Schema(
       type: String,
       default: '',
     },
-    yield: {
+    _yield: {
       type: Number,
-      default: 0,
+      default: null,
     },
     solvent: {
       type: String,
@@ -155,9 +155,10 @@ const schemeSchema = new Schema(
       type: String,
       required: true,
     },
-    // stages: {
-    //   type: [stageSchema],
-    // },
+    stages: {
+      type: [stageSchema],
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );

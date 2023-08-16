@@ -3,6 +3,8 @@ const handleMongooseError = require('./handleMongooseError');
 const ctrlWrapper = require('./ctrlWrapper');
 const createResponse = require('./createResponse');
 const sendVerificationEmail = require('./sendVerificationEmail');
+const generateAttemptUpdateBody = require('./generateAttemptUpdateBody');
+const generateStageUpdateBody = require('./generateStageUpdateBody');
 
 const {
   generateTokens,
@@ -18,6 +20,8 @@ module.exports = {
   ctrlWrapper,
   createResponse,
   sendVerificationEmail,
+  generateAttemptUpdateBody,
+  generateStageUpdateBody,
 };
 
 export {};

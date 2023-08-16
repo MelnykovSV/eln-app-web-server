@@ -5,6 +5,9 @@ const deleteScheme = require('./deleteScheme');
 const getSchemes = require('./getSchemes');
 const getSingleScheme = require('./getSingleScheme');
 const updateScheme = require('./updateScheme');
+const updateAttempt = require('./updateAttempt');
+const updateStage = require('./updateStage');
+const addAttempt = require('./addAttempt');
 
 module.exports = {
   createNewScheme: ctrlWrapper(createNewScheme),
@@ -12,6 +15,9 @@ module.exports = {
   getSchemes: ctrlWrapper(getSchemes),
   getSingleScheme: ctrlWrapper(getSingleScheme),
   updateScheme: ctrlWrapper(updateScheme),
+  updateAttempt: ctrlWrapper(updateAttempt),
+  updateStage: ctrlWrapper(updateStage),
+  addAttempt: ctrlWrapper(addAttempt),
 };
 
 export {};
