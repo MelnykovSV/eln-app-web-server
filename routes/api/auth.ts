@@ -60,6 +60,6 @@ authRouter.patch(
   upload.single('avatar'),
   updateAvatar
 );
-authRouter.post('/refresh', authenticateRefresh, refresh);
+authRouter.get('/refresh', authenticateRefresh, refresh);
 module.exports = authRouter;
 export {};

@@ -11,7 +11,7 @@ const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
 
   const response = await Scheme.find(
     { owner: user._id },
-    '-createdAt -updatedAt -owner -stages'
+    '-owner -stages'
   );
 
   createResponse(res, 200, "User's schemes", response);

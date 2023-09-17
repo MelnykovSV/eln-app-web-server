@@ -15,7 +15,8 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
     verify: true,
   });
 
-  createResponse(res, 200, 'Email verified');
+  // createResponse(res, 200, 'Email verified');
+  res.send('<p>Email verification success!</p>');
 };
 
 module.exports = verifyEmail;

@@ -9,15 +9,37 @@ const authenticateRefresh = async (
   next: Express.NextFunction
 ) => {
   try {
-    const { refreshToken: oldRefreshToken } = req.cookies;
+    // const { refreshToken: oldRefreshToken } = req.cookies;
 
-    const { id } = validateRefreshToken(oldRefreshToken);
-    const user = await User.findById(id);
+    // const { id } = validateRefreshToken(oldRefreshToken);
+    // const user = await User.findById(id);
 
-    if (!user || !user.accessToken || user.refreshToken !== oldRefreshToken) {
+    // if (!user || !user.accessToken || user.refreshToken !== oldRefreshToken) {
+    //   throw HttpError(401);
+    // }
+
+    // req.user = user;
+
+    // next();
+    const { authorization } = req.headers;
+
+    if (!authorization || typeof authorization !== 'string') {
       throw HttpError(401);
     }
 
+    const [bearer, token] = authorization.split(' ');
+
+    console.log(token);
+    if (bearer !== 'Bearer') {
+      throw HttpError(401);
+    }
+    console.log(token);
+    const { id } = validateRefreshToken(token);
+    const user = await User.findById(id);
+    if (!user || !user.refreshToken || user.refreshToken !== token) {
+      throw HttpError(401);
+    }
+    console.log(token);
     req.user = user;
 
     next();

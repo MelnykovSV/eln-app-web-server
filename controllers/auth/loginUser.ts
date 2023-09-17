@@ -34,6 +34,7 @@ const loginUser = async (req: Express.Request, res: Express.Response) => {
 
   const data = {
     accessToken,
+    refreshToken,
 
     user: {
       userName,
@@ -41,10 +42,10 @@ const loginUser = async (req: Express.Request, res: Express.Response) => {
       avatarURL,
     },
   };
-  res.cookie('refreshToken', refreshToken, {
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-  });
+  // res.cookie('refreshToken', refreshToken, {
+  //   maxAge: 30 * 24 * 60 * 60 * 1000,
+  //   httpOnly: true,
+  // });
   createResponse(res, 200, 'Login successful', data);
 };
 

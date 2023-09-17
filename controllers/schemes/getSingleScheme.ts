@@ -14,7 +14,7 @@ const getSingleScheme = async (
 
   const response = await Scheme.findOne(
     { _id: req.params.schemeId, owner: user._id },
-    '-createdAt -updatedAt -owner'
+    ' -owner'
   );
 
   createResponse(res, 200, 'Single scheme', response);

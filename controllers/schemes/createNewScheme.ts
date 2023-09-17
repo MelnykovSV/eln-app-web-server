@@ -11,7 +11,8 @@ const createNewScheme = async (
     throw HttpError(401);
   }
 
-  const { mass, price, startingMaterial, targetCompound, stages } = req.body;
+  const { mass, price, startingMaterial, targetCompound, stages, deadline } =
+    req.body;
 
   const response = await Scheme.create({
     owner: user._id,
@@ -20,6 +21,8 @@ const createNewScheme = async (
     startingMaterial,
     targetCompound,
     stages,
+    deadline,
+    stagesNumber: stages.length,
   });
 
   createResponse(res, 201, 'New scheme created', response);

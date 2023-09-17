@@ -1,7 +1,10 @@
 import { IError } from './types';
 const mongoose = require('mongoose');
 const app = require('./app');
+const http = require('http');
+const https = require('https');
 require('dotenv').config();
+
 const { DB_HOST } = process.env;
 mongoose.set('strictQuery', true);
 

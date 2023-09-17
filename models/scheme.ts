@@ -7,62 +7,144 @@ const Joi = require('joi');
 //   passwordRegexp,
 //   emailRegexp,
 // } = require('./../regexp/index');
+
+const defaultAttempt = {
+  attemptNumber: 1,
+  _id: null,
+  _yield: null,
+  solvent: null,
+  methodic: null,
+  temp: null,
+  time: null,
+  notes: null,
+  startingMaterialMass: null,
+  productMass: null,
+  productPurity: null,
+  type: 'test',
+  isOk: false,
+  spectra: [],
+  reagents: [
+    {
+      reagentNumber: 1,
+      smiles: null,
+      equivalents: null,
+      molecularWeight: null,
+      mass: null,
+    },
+    {
+      reagentNumber: 2,
+      smiles: null,
+      equivalents: null,
+      molecularWeight: null,
+      mass: null,
+    },
+    {
+      reagentNumber: 3,
+      smiles: null,
+      equivalents: null,
+      molecularWeight: null,
+      mass: null,
+    },
+    {
+      reagentNumber: 4,
+      smiles: null,
+      equivalents: null,
+      molecularWeight: null,
+      mass: null,
+    },
+  ],
+};
+
+const spectrSchema = new Schema({
+  label: {
+    type: String,
+    required: true,
+  },
+  spectrUrl: {
+    type: String,
+    required: true,
+  },
+});
+const attemptReagentSchema = new Schema({
+  reagentNumber: {
+    type: Number,
+    default: 1,
+  },
+  smiles: {
+    type: String,
+    default: null,
+  },
+  equivalents: {
+    type: Number,
+    default: null,
+  },
+  molecularWeight: {
+    type: Number,
+    default: null,
+  },
+  mass: {
+    type: Number,
+    default: null,
+  },
+});
 const attemptSchema = new Schema(
   {
+    attemptNumber: {
+      type: Number,
+      default: 1,
+    },
     temp: {
-      type: String,
-      default: '',
+      type: Number,
+      default: null,
     },
     time: {
       type: String,
-      default: '',
+      default: null,
     },
     methodic: {
       type: String,
-      default: '',
+      default: null,
     },
     solvent: {
       type: String,
-      default: '',
+      default: null,
     },
     _yield: {
       type: Number,
-      default: 0,
+      default: null,
     },
     reagents: {
-      type: [],
-      default: [],
+      type: [attemptReagentSchema],
     },
     spectra: {
-      type: [String],
-      default: [],
+      type: [spectrSchema],
     },
 
-    smMass: {
+    startingMaterialMass: {
       type: Number,
-      default: 0,
+      default: null,
     },
-    smPurity: {
+    productMass: {
       type: Number,
-      default: 0,
+      default: null,
     },
-    purity: {
+
+    productPurity: {
       type: Number,
-      default: 0,
+      default: null,
     },
     type: {
       type: String,
       enum: ['test', 'scaling'],
-      required: true,
+      default: 'test',
     },
-    status: {
-      type: String,
-      enum: ['active', 'success', 'fail'],
-      required: true,
+    isOk: {
+      type: Boolean,
+      default: false,
     },
     notes: {
       type: String,
-      default: '',
+      default: null,
     },
   },
   { versionKey: false, timestamps: true }
@@ -110,11 +192,7 @@ const stageSchema = new Schema(
     },
     attempts: {
       type: [attemptSchema],
-      default: [],
-    },
-    fractionsSummary: {
-      type: [],
-      default: [],
+      default: [defaultAttempt],
     },
   },
   { versionKey: false, timestamps: true }
@@ -158,6 +236,9 @@ const schemeSchema = new Schema(
     stages: {
       type: [stageSchema],
       required: true,
+    },
+    stagesNumber: {
+      type: Number,
     },
   },
   { versionKey: false, timestamps: true }

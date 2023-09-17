@@ -10,13 +10,14 @@ const refresh = async (req: IExtendedRequest, res: Express.Response) => {
 
   await User.findByIdAndUpdate(_id, { accessToken, refreshToken });
 
-  res.cookie('refreshToken', refreshToken, {
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-  });
+  // res.cookie('refreshToken', refreshToken, {
+  //   maxAge: 30 * 24 * 60 * 60 * 1000,
+  //   httpOnly: true,
+  // });
 
   const data = {
     accessToken,
+    refreshToken,
   };
 
   createResponse(res, 200, 'Tokens refreshed', data);
