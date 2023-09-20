@@ -218,7 +218,7 @@ const schemeSchema = new Schema(
     },
 
     price: {
-      type: String,
+      type: Number,
       required: true,
     },
     deadline: {

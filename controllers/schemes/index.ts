@@ -8,6 +8,8 @@ const updateScheme = require('./updateScheme');
 const updateAttempt = require('./updateAttempt');
 const updateStage = require('./updateStage');
 const addAttempt = require('./addAttempt');
+const uploadSpectr = require('./uploadSpectr');
+const downloadSpectr = require('./downloadSpectr');
 
 module.exports = {
   createNewScheme: ctrlWrapper(createNewScheme),
@@ -18,6 +20,8 @@ module.exports = {
   updateAttempt: ctrlWrapper(updateAttempt),
   updateStage: ctrlWrapper(updateStage),
   addAttempt: ctrlWrapper(addAttempt),
+  uploadSpectr: ctrlWrapper(uploadSpectr),
+  downloadSpectr: ctrlWrapper(downloadSpectr),
 };
 
 export {};

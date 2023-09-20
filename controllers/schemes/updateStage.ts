@@ -29,7 +29,7 @@ const updateStage = async (req: IExtendedRequest, res: Express.Response) => {
     }
   );
 
-  createResponse(res, 201, 'New scheme created', response);
+  createResponse(res, 201, 'Stage updated', response);
 };
 
 module.exports = updateStage;
