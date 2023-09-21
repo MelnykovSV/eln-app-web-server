@@ -1,7 +1,10 @@
 import * as Express from 'express';
 import { IExtendedRequest } from '../../types';
+const { nanoid } = require('nanoid');
 const fs = require('fs/promises');
+const fsSync = require('fs');
 const path = require('path');
+const { Scheme } = require('../../models/scheme');
 
 const spectraDir = path.join(__dirname, '../', '../', 'public/', 'spectra');
 const { HttpError, createResponse } = require('../../helpers/index');
@@ -14,7 +17,7 @@ const options = {
 const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
   const { _id } = req.user;
   const user = await User.findById(_id);
-  const { label, attemptNumber } = req.body;
+  const { label, attemptNumber, schemeId, stageId } = req.body;
   console.log('resultUpload');
   if (!user) {
     throw HttpError(401);
@@ -35,33 +38,55 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
   //   }
 
   const { path: tempUpload, originalname } = req.file;
-  const filename = `${_id}_${originalname}`;
-  const resultUpload = path.join(spectraDir, filename);
+  const folders = `user_${_id}/scheme_${schemeId}/stage_${stageId}/attempt_${attemptNumber}`;
+  const filename = `spectr_${nanoid()}.pdf`;
 
-  try {
+  const folderStructure = path.join(spectraDir, folders);
+  const resultUpload = path.join(folderStructure, filename);
+  if (fsSync.existsSync(folderStructure)) {
+    console.log('The directory exists');
     await fs.rename(tempUpload, resultUpload);
-  } catch (err) {
-    await fs.unlink(tempUpload);
-    console.log(err);
-    throw HttpError(err);
+  } else {
+    console.log('The directory does NOT exist');
+    await fs.mkdir(folderStructure, { recursive: true });
+    await fs.rename(tempUpload, resultUpload);
   }
 
-  //   await fs.unlink(tempUpload);
-  const spectraURL = path.join('spectra', filename);
+  const spectrURL = path.join('spectra', folders, filename);
 
-  console.log(spectraURL);
-  console.log(resultUpload);
+  //Записать данные в базу тут
 
-  //   await User.findByIdAndUpdate(_id, { spectraURL }); ///переделать
-  //   try {
-  //     const response = await res.download(resultUpload, 'test.pdf');
-  //     console.log(response);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
+  try {
+    const response = await Scheme.findOneAndUpdate(
+      {
+        'stages._id': stageId,
+      },
+
+      {
+        $push: {
+          'stages.$[].attempts.$[attempt].spectra': {
+            label: label,
+            spectrUrl: spectrURL,
+          },
+        },
+      },
+      {
+        arrayFilters: [
+          { 'attempt.attemptNumber': attemptNumber }, // Filter for the specific stage _id
+        ],
+        new: true,
+      }
+    );
+
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+
+  //Записать данные в базу тут
 
   createResponse(res, 200, 'File updated', {
-    spectraURL,
+    spectrURL,
     label,
     attemptNumber,
   });
