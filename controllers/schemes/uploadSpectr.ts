@@ -1,5 +1,6 @@
 import * as Express from 'express';
 import { IExtendedRequest } from '../../types';
+import { IStage, ISpectr } from '../../types';
 const { nanoid } = require('nanoid');
 const fs = require('fs/promises');
 const fsSync = require('fs');
@@ -23,21 +24,15 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     throw HttpError(401);
   }
 
-  //   console.log(req.file);
-
   if (!req.file) {
     throw HttpError(400, 'File is required');
   }
 
-  //   if (
-  //     !req.file.originalname.endsWith('.png') &&
-  //     !req.file.originalname.endsWith('.jpg') &&
-  //     !req.file.originalname.endsWith('.jpeg')
-  //   ) {
-  //     throw HttpError(400, 'Image has to be in .png or .jpg fromat');
-  //   }
+  if (!req.file.originalname.endsWith('.pdf')) {
+    throw HttpError(400, 'Image has to be in .pdf fromat');
+  }
 
-  const { path: tempUpload, originalname } = req.file;
+  const { path: tempUpload } = req.file;
   const folders = `user_${_id}/scheme_${schemeId}/stage_${stageId}/attempt_${attemptNumber}`;
   const filename = `spectr_${nanoid()}.pdf`;
 
@@ -56,40 +51,45 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
 
   //Записать данные в базу тут
 
-  try {
-    const response = await Scheme.findOneAndUpdate(
-      {
-        'stages._id': stageId,
-      },
+  const response = await Scheme.findOneAndUpdate(
+    {
+      'stages._id': stageId,
+    },
 
-      {
-        $push: {
-          'stages.$[].attempts.$[attempt].spectra': {
-            label: label,
-            spectrUrl: spectrURL,
-          },
+    {
+      $push: {
+        'stages.$[].attempts.$[attempt].spectra': {
+          label: label,
+          spectrUrl: spectrURL,
         },
       },
-      {
-        arrayFilters: [
-          { 'attempt.attemptNumber': attemptNumber }, // Filter for the specific stage _id
-        ],
-        new: true,
-      }
-    );
+    },
+    {
+      arrayFilters: [
+        { 'attempt.attemptNumber': attemptNumber }, // Filter for the specific stage _id
+      ],
+      new: true,
+    }
+  );
 
-    console.log(response);
-  } catch (e) {
-    console.log(e);
-  }
+  // console.log(
+  //   response.stages.find((stage: IStage) => stage._id).attempts[
+  //     attemptNumber - 1
+  //   ].spectra
+  // );
 
   //Записать данные в базу тут
 
-  createResponse(res, 200, 'File updated', {
-    spectrURL,
-    label,
-    attemptNumber,
-  });
+  createResponse(
+    res,
+    200,
+    'File updated',
+    response.stages
+      .find((stage: IStage) => stage._id.toString()===stageId)
+      .attempts[attemptNumber - 1].spectra.map(
+        ({ label, spectrUrl, _id }: ISpectr) => ({ label, spectrUrl, _id })
+      )
+  );
 };
 
 module.exports = uploadSpectr;

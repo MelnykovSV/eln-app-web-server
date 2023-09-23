@@ -6,7 +6,7 @@ const {
   deleteScheme,
   getSchemes,
   getSingleScheme,
-  updateScheme,
+  updateSchemeStatus,
   updateAttempt,
   updateStage,
   addAttempt,
@@ -20,13 +20,17 @@ const {
 } = require('./../../middlewares/index');
 
 schemesRouter.get('/', authenticate, getSchemes);
-schemesRouter.get('/spectr', authenticate, downloadSpectr);
+schemesRouter.get(
+  '/spectr/:schemeId/:stageId/:attemptNumber/:spectrId',
+  authenticate,
+  downloadSpectr
+);
 schemesRouter.get('/:schemeId', authenticate, getSingleScheme);
 schemesRouter.post('/', authenticate, createNewScheme);
-schemesRouter.put('/', authenticate, updateScheme);
+schemesRouter.patch('/:schemeId', authenticate, updateSchemeStatus);
 schemesRouter.delete('/', authenticate, deleteScheme);
 schemesRouter.post('/updateAttempt/:attemptId', authenticate, updateAttempt);
-schemesRouter.post('/updateStage/:stageId', authenticate, updateStage);
+schemesRouter.patch('/updateStage/:stageId', authenticate, updateStage);
 schemesRouter.post('/addAttempt/:stageId', authenticate, addAttempt);
 
 schemesRouter.patch(
