@@ -16,6 +16,7 @@ const options = {
 };
 
 const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
+  console.log('here');
   const { _id } = req.user;
   const user = await User.findById(_id);
   const { label, attemptNumber, schemeId, stageId } = req.body;
@@ -85,7 +86,7 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     200,
     'File updated',
     response.stages
-      .find((stage: IStage) => stage._id.toString()===stageId)
+      .find((stage: IStage) => stage._id.toString() === stageId)
       .attempts[attemptNumber - 1].spectra.map(
         ({ label, spectrUrl, _id }: ISpectr) => ({ label, spectrUrl, _id })
       )
