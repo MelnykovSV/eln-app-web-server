@@ -24,6 +24,9 @@ const downloadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     .attempts[(attemptNumber as any) - 1].spectra.find(
       (spectr: any) => spectr._id.toString() === spectrId
     ).spectrUrl;
+
+  console.log('spectrUrl');
+  console.log(spectrUrl);
   res.download(spectrUrl);
 };
 
