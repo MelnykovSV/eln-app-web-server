@@ -33,22 +33,23 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     throw HttpError(400, 'Image has to be in .pdf fromat');
   }
 
-  const { path: tempUpload } = req.file;
-  const folders = `user_${_id}/scheme_${schemeId}/stage_${stageId}/attempt_${attemptNumber}`;
-  const filename = `spectr_${nanoid()}.pdf`;
+  // const { path: tempUpload } = req.file;
+  // const folders = `user_${_id}/scheme_${schemeId}/stage_${stageId}/attempt_${attemptNumber}`;
+  // const filename = `spectr_${nanoid()}.pdf`;
 
-  const folderStructure = path.join(spectraDir, folders);
-  const resultUpload = path.join(folderStructure, filename);
-  if (fsSync.existsSync(folderStructure)) {
-    console.log('The directory exists');
-    await fs.rename(tempUpload, resultUpload);
-  } else {
-    console.log('The directory does NOT exist');
-    await fs.mkdir(folderStructure, { recursive: true });
-    await fs.rename(tempUpload, resultUpload);
-  }
+  // const folderStructure = path.join(spectraDir, folders);
+  // const resultUpload = path.join(folderStructure, filename);
+  // if (fsSync.existsSync(folderStructure)) {
+  //   console.log('The directory exists');
+  //   await fs.rename(tempUpload, resultUpload);
+  // } else {
+  //   console.log('The directory does NOT exist');
+  //   await fs.mkdir(folderStructure, { recursive: true });
+  //   await fs.rename(tempUpload, resultUpload);
+  // }
 
-  const spectrURL = path.join('spectra', folders, filename);
+  // const spectrURL = path.join('spectra', folders, filename);
+  const spectrURL = req.file.path;
 
   //Записать данные в базу тут
 
