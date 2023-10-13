@@ -29,9 +29,9 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     throw HttpError(400, 'File is required');
   }
 
-  if (!req.file.originalname.endsWith('.pdf')) {
-    throw HttpError(400, 'Image has to be in .pdf fromat');
-  }
+  // if (!req.file.originalname.endsWith('.pdf')) {
+  //   throw HttpError(400, 'Image has to be in .pdf fromat');
+  // }
 
   // const { path: tempUpload } = req.file;
   // const folders = `user_${_id}/scheme_${schemeId}/stage_${stageId}/attempt_${attemptNumber}`;
