@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   folder: 'spectra',
-  allowedFormats: ['pdf, jpg'],
+  allowedFormats: ['pdf', 'jpg'],
   filename: (
     req: Express.Request,
     file: Express.Multer.File,
