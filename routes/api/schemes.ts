@@ -16,7 +16,7 @@ const {
 const {
   validateBody,
   authenticate,
-  upload,
+  uploadCloud,
 } = require('./../../middlewares/index');
 
 schemesRouter.get('/', authenticate, getSchemes);
@@ -32,7 +32,7 @@ schemesRouter.post('/addAttempt/:stageId', authenticate, addAttempt);
 schemesRouter.patch(
   '/spectr',
   authenticate,
-  upload.single('spectr'),
+  uploadCloud.single('spectr'),
   uploadSpectr
 );
 
