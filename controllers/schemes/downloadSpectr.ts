@@ -3,7 +3,7 @@ import { IExtendedRequest } from '../../types';
 const fs = require('fs/promises');
 const path = require('path');
 
-const publicDir = path.join(__dirname, '../', '../', 'public/');
+// const publicDir = path.join(__dirname, '../', '../', 'public/');
 const { HttpError, createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');
 const { Scheme } = require('../../models/scheme');
@@ -24,7 +24,7 @@ const downloadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     .attempts[(attemptNumber as any) - 1].spectra.find(
       (spectr: any) => spectr._id.toString() === spectrId
     ).spectrUrl;
-  res.download(publicDir + spectrUrl);
+  res.download(spectrUrl);
 };
 
 module.exports = downloadSpectr;
