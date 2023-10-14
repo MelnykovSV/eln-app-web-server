@@ -3,6 +3,8 @@ import { IExtendedRequest } from '../../types';
 const fs = require('fs/promises');
 const path = require('path');
 
+///МОЖНО БУДЕТ УДАЛИТЬ!
+
 // const publicDir = path.join(__dirname, '../', '../', 'public/');
 const { HttpError, createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');

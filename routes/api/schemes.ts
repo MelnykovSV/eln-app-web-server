@@ -11,7 +11,7 @@ const {
   updateStage,
   addAttempt,
   uploadSpectr,
-  downloadSpectr,
+  // downloadSpectr,
 } = require('./../../controllers/schemes/index');
 const {
   validateBody,
@@ -36,11 +36,11 @@ schemesRouter.patch(
   uploadSpectr
 );
 
-schemesRouter.get(
-  '/spectr/:schemeId/:stageId/:attemptNumber/:spectrId',
-  authenticate,
-  downloadSpectr
-);
+// schemesRouter.get(
+//   '/spectr/:schemeId/:stageId/:attemptNumber/:spectrId',
+//   authenticate,
+//   downloadSpectr
+// );
 
 schemesRouter.patch('/:schemeId', authenticate, updateSchemeStatus);
 module.exports = schemesRouter;
