@@ -38,7 +38,7 @@ schemesRouter.patch(
 );
 
 schemesRouter.delete(
-  '/spectr/:stageId/:attemptNumber/:spectrId',
+  '/spectr/:stageId/:attemptNumber/:spectrId/:publicId',
   authenticate,
   deleteSpectr
 );

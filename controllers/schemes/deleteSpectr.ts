@@ -4,11 +4,12 @@ import { IStage, ISpectr } from '../../types';
 const { Scheme } = require('../../models/scheme');
 const { HttpError, createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');
+const cloudinary = require('cloudinary').v2;
 
 const deleteSpectr = async (req: IExtendedRequest, res: Express.Response) => {
   const { _id } = req.user;
   const user = await User.findById(_id);
-  const { spectrId, attemptNumber, stageId }: any = req.params;
+  const { spectrId, attemptNumber, stageId, publicId }: any = req.params;
   const {} = req.body;
   if (!user) {
     throw HttpError(401);
@@ -29,6 +30,8 @@ const deleteSpectr = async (req: IExtendedRequest, res: Express.Response) => {
       new: true,
     }
   );
+
+  cloudinary.uploader.destroy(publicId);
 
   createResponse(
     res,
