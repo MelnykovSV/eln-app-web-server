@@ -11,6 +11,7 @@ const {
   updateStage,
   addAttempt,
   uploadSpectr,
+  deleteSpectr,
   // downloadSpectr,
 } = require('./../../controllers/schemes/index');
 const {
@@ -36,11 +37,11 @@ schemesRouter.patch(
   uploadSpectr
 );
 
-// schemesRouter.get(
-//   '/spectr/:schemeId/:stageId/:attemptNumber/:spectrId',
-//   authenticate,
-//   downloadSpectr
-// );
+schemesRouter.delete(
+  '/spectr/:stageId/:attemptNumber/:spectrId',
+  authenticate,
+  deleteSpectr
+);
 
 schemesRouter.patch('/:schemeId', authenticate, updateSchemeStatus);
 module.exports = schemesRouter;

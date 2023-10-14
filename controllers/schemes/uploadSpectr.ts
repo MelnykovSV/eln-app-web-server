@@ -74,11 +74,6 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     }
   );
 
-  // console.log(
-  //   response.stages.find((stage: IStage) => stage._id).attempts[
-  //     attemptNumber - 1
-  //   ].spectra
-  // );
 
   //Записать данные в базу тут
 

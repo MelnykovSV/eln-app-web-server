@@ -10,6 +10,7 @@ const updateStage = require('./updateStage');
 const addAttempt = require('./addAttempt');
 const uploadSpectr = require('./uploadSpectr');
 const downloadSpectr = require('./downloadSpectr');
+const deleteSpectr = require('./deleteSpectr');
 
 module.exports = {
   createNewScheme: ctrlWrapper(createNewScheme),
@@ -22,6 +23,7 @@ module.exports = {
   addAttempt: ctrlWrapper(addAttempt),
   uploadSpectr: ctrlWrapper(uploadSpectr),
   downloadSpectr: ctrlWrapper(downloadSpectr),
+  deleteSpectr: ctrlWrapper(deleteSpectr),
 };
 
 export {};
