@@ -9,7 +9,14 @@ import { IExtendedRequest } from '../../types';
 const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
   const user = req.user;
 
-  const { page = 1, limit = 18, schemeStatus = 'all' } = req.query;
+  const {
+    page = 1,
+    limit = 18,
+    schemeStatus = 'all',
+    sortingParam = 'createdAt',
+    sortingDirection = 'asc',
+    substring = '',
+  } = req.query;
 
   if (
     schemeStatus !== 'all' &&
@@ -25,16 +32,20 @@ const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
     throw HttpError(401);
   }
 
+  const substringRegExp = new RegExp(`.*${substring as string}.*`);
   if (schemeStatus === 'all') {
     const allSchemes = await Scheme.find({ owner: user._id }, '-owner -stages');
 
     const totalPages = Math.ceil(allSchemes.length / Number(limit));
 
     const response = await Scheme.find(
-      { owner: user._id },
+      {
+        owner: user._id,
+        targetCompound: { $regex: substringRegExp, $options: 'i' },
+      },
       '-owner -stages',
       calculatePaginationParams(page, limit)
-    );
+    ).sort([[sortingParam, sortingDirection]]);
 
     createResponse(res, 200, "User's schemes", {
       schemes: response,
@@ -48,7 +59,11 @@ const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
     );
     const totalPages = Math.ceil(allSchemes.length / Number(limit));
     const response = await Scheme.find(
-      { owner: user._id, status: schemeStatus },
+      {
+        owner: user._id,
+        status: schemeStatus,
+        targetCompound: { $regex: substringRegExp, $options: 'i' },
+      },
       '-owner -stages',
       calculatePaginationParams(page, limit)
     );
