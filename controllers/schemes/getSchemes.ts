@@ -26,21 +26,38 @@ const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
   }
 
   if (schemeStatus === 'all') {
+    const allSchemes = await Scheme.find({ owner: user._id }, '-owner -stages');
+
+    const totalPages = Math.ceil(allSchemes.length / Number(limit));
+
     const response = await Scheme.find(
       { owner: user._id },
       '-owner -stages',
       calculatePaginationParams(page, limit)
     );
 
-    createResponse(res, 200, "User's schemes", response);
+    createResponse(res, 200, "User's schemes", {
+      schemes: response,
+      currentPage: page,
+      totalPages,
+    });
   } else {
+    const allSchemes = await Scheme.find(
+      { owner: user._id, status: schemeStatus },
+      '-owner -stages'
+    );
+    const totalPages = Math.ceil(allSchemes.length / Number(limit));
     const response = await Scheme.find(
       { owner: user._id, status: schemeStatus },
       '-owner -stages',
       calculatePaginationParams(page, limit)
     );
 
-    createResponse(res, 200, "User's schemes", response);
+    createResponse(res, 200, "User's schemes", {
+      schemes: response,
+      currentPage: page,
+      totalPages,
+    });
   }
 };
 
