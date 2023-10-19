@@ -5,6 +5,7 @@ const createResponse = require('./createResponse');
 const sendVerificationEmail = require('./sendVerificationEmail');
 const generateAttemptUpdateBody = require('./generateAttemptUpdateBody');
 const generateStageUpdateBody = require('./generateStageUpdateBody');
+const calculatePaginationParams = require('./calculatePaginationParams');
 
 const {
   generateTokens,
@@ -22,6 +23,7 @@ module.exports = {
   sendVerificationEmail,
   generateAttemptUpdateBody,
   generateStageUpdateBody,
+  calculatePaginationParams,
 };
 
 export {};

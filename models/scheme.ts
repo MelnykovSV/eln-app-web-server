@@ -208,7 +208,7 @@ const schemeSchema = new Schema(
 
     status: {
       type: String,
-      enum: ['active', 'success', 'fail'],
+      enum: ['active', 'success', 'fail', 'chosen'],
       default: 'active',
     },
 
