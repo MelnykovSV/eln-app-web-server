@@ -38,7 +38,7 @@ const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
 
     createResponse(res, 200, "User's schemes", {
       schemes: response,
-      currentPage: page,
+      currentPage: Number(page),
       totalPages,
     });
   } else {
