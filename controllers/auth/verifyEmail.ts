@@ -2,6 +2,7 @@ import * as Express from 'express';
 
 const { HttpError, createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');
+const { LOGIN_PAGE_URL } = require('./../../constants');
 
 const verifyEmail = async (req: Express.Request, res: Express.Response) => {
   const { verificationCode } = req.params;
@@ -15,9 +16,8 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
     verify: true,
   });
 
-  // createResponse(res, 200, 'Email verified');
   res.send(
-    '<!DOCTYPE html><html><head><title>Email Validation Success</title></head><body><h1>Email Validation Successful</h1><p>Your email has been successfully validated. You can now access our services.</p><p>Here\'s a link to another page:</p><a href="https://www.example.com/another-page.html">Go to Another Page</a></body></html>'
+    `<!DOCTYPE html><html><head><title>Email Validation Success</title></head><body><h1>Email Validation Successful</h1><p>Your email has been successfully validated. You can now access our services.</p><p>Here\'s a link to another page:</p><a href=${LOGIN_PAGE_URL}>Login page</a></body></html>`
   );
 };
 
