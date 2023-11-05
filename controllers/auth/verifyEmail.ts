@@ -16,7 +16,9 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
   });
 
   // createResponse(res, 200, 'Email verified');
-  res.send('<p>Email verification success!</p>');
+  res.send(
+    '<!DOCTYPE html><html><head><title>Email Validation Success</title></head><body><h1>Email Validation Successful</h1><p>Your email has been successfully validated. You can now access our services.</p><p>Here\'s a link to another page:</p><a href="https://www.example.com/another-page.html">Go to Another Page</a></body></html>'
+  );
 };
 
 module.exports = verifyEmail;
