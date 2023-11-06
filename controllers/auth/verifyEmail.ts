@@ -17,7 +17,7 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
   });
 
   res.send(
-    `<!DOCTYPE html><html><head><title>Email Validation Success</title></head><body><h1>Email Validation Successful</h1><p>Your email has been successfully validated. You can now access our services.</p><p>Here\'s a link to another page:</p><a href=${LOGIN_PAGE_URL}>Login page</a></body></html>`
+    `<!DOCTYPE html><html><head><title>Email Validation Success</title><link rel="stylesheet" type="text/css" href="./css/emailVaidationSuccessPage.css"></head><body><h1>Email Validation Successful</h1><p>Your email has been successfully validated. You can now access our services.</p><p>Here\'s a link to another page:</p><a href=${LOGIN_PAGE_URL}>Login page</a></body></html>`
   );
 };
 
