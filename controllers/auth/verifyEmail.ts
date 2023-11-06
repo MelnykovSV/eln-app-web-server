@@ -3,7 +3,6 @@ import * as Express from 'express';
 const { HttpError, createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');
 const { LOGIN_PAGE_URL } = require('./../../constants');
-const { css } = require('./../');
 
 const verifyEmail = async (req: Express.Request, res: Express.Response) => {
   const { verificationCode } = req.params;
