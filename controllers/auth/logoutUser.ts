@@ -1,8 +1,6 @@
 import * as Express from 'express';
 import { IExtendedRequest } from '../../types';
 
-const path = require('path');
-
 const { createResponse } = require('../../helpers/index');
 const { User } = require('../../models/auth');
 

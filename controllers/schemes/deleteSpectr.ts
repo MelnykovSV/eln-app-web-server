@@ -9,7 +9,7 @@ const cloudinary = require('cloudinary').v2;
 const deleteSpectr = async (req: IExtendedRequest, res: Express.Response) => {
   const { _id } = req.user;
   const user = await User.findById(_id);
-  const { spectrId, attemptNumber, stageId, publicId }: any = req.params;
+  const { spectrId, attemptNumber, stageId, publicId } = req.params;
   const {} = req.body;
   if (!user) {
     throw HttpError(401);
@@ -39,7 +39,7 @@ const deleteSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     'File deleted',
     response.stages
       .find((stage: IStage) => stage._id.toString() === stageId)
-      .attempts[attemptNumber - 1].spectra.map(
+      .attempts[Number(attemptNumber) - 1].spectra.map(
         ({ label, spectrUrl, _id }: ISpectr) => ({ label, spectrUrl, _id })
       )
   );

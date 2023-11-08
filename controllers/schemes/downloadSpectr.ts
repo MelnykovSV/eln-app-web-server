@@ -1,5 +1,6 @@
 import * as Express from 'express';
 import { IExtendedRequest } from '../../types';
+import { IStage, ISpectr } from '../../types';
 
 const { HttpError } = require('../../helpers/index');
 const { User } = require('../../models/auth');
@@ -16,9 +17,9 @@ const downloadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
 
   const scheme = await Scheme.findById(schemeId);
   const spectrUrl = scheme.stages
-    .find((stage: any) => stage._id.toString() === stageId)
-    .attempts[(attemptNumber as any) - 1].spectra.find(
-      (spectr: any) => spectr._id.toString() === spectrId
+    .find((stage: IStage) => stage._id.toString() === stageId)
+    .attempts[Number(attemptNumber) - 1].spectra.find(
+      (spectr: ISpectr) => spectr._id.toString() === spectrId
     ).spectrUrl;
   res.download(spectrUrl);
 };
