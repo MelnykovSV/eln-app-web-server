@@ -101,7 +101,6 @@ module.exports = {
   User,
   registerJoiSchema,
   loginJoiSchema,
-  // updateUserJoiSchema,
   userNameJoiSchema,
   passwordJoiSchema,
 

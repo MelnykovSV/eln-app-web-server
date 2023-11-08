@@ -20,7 +20,7 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Email Validation Success</title>
+        <title>Email Verification Success</title>
         <link rel="stylesheet" type="text/css" href="${WEB_SERVER_DOMAIN}/css/styles.css" />
       </head>
       <body>
@@ -42,7 +42,7 @@ const verifyEmail = async (req: Express.Request, res: Express.Response) => {
             </div>
           </div>
     
-          <h1 class="title">Email Validation Successful</h1>
+          <h1 class="title">Email Verification Successful</h1>
           <p class="paragraph outer">
             Your email has been successfully validated. You can now access our services.
           </p>

@@ -1,12 +1,6 @@
 const { Schema, model } = require('mongoose');
 const { handleMongooseError } = require('../helpers/index');
-const Joi = require('joi');
 
-// const {
-//   userNameRegexp,
-//   passwordRegexp,
-//   emailRegexp,
-// } = require('./../regexp/index');
 
 const defaultAttempt = {
   attemptNumber: 1,

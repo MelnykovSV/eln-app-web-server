@@ -5,7 +5,6 @@ const { User } = require('../../models/auth');
 
 const getCurrentUser = async (req: IExtendedRequest, res: Express.Response) => {
   const { _id } = req.user;
-  console.log(req.user);
   const { userName, email, avatarURL } = await User.findById(_id);
 
   createResponse(res, 200, 'Current user', { userName, email, avatarURL });

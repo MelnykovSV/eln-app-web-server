@@ -1,9 +1,6 @@
 import * as Express from 'express';
 import { IExtendedRequest } from '../../types';
 import { IStage, ISpectr } from '../../types';
-const { nanoid } = require('nanoid');
-const fs = require('fs/promises');
-const fsSync = require('fs');
 const path = require('path');
 const { Scheme } = require('../../models/scheme');
 
@@ -16,11 +13,9 @@ const options = {
 };
 
 const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
-  console.log('here');
   const { _id } = req.user;
   const user = await User.findById(_id);
   const { label, attemptNumber, schemeId, stageId } = req.body;
-  console.log('resultUpload');
   if (!user) {
     throw HttpError(401);
   }
@@ -29,29 +24,9 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     throw HttpError(400, 'File is required');
   }
 
-  // if (!req.file.originalname.endsWith('.pdf')) {
-  //   throw HttpError(400, 'Image has to be in .pdf fromat');
-  // }
 
-  // const { path: tempUpload } = req.file;
-  // const folders = `user_${_id}/scheme_${schemeId}/stage_${stageId}/attempt_${attemptNumber}`;
-  // const filename = `spectr_${nanoid()}.pdf`;
-
-  // const folderStructure = path.join(spectraDir, folders);
-  // const resultUpload = path.join(folderStructure, filename);
-  // if (fsSync.existsSync(folderStructure)) {
-  //   console.log('The directory exists');
-  //   await fs.rename(tempUpload, resultUpload);
-  // } else {
-  //   console.log('The directory does NOT exist');
-  //   await fs.mkdir(folderStructure, { recursive: true });
-  //   await fs.rename(tempUpload, resultUpload);
-  // }
-
-  // const spectrURL = path.join('spectra', folders, filename);
   const spectrURL = req.file.path;
 
-  //Записать данные в базу тут
 
   const response = await Scheme.findOneAndUpdate(
     {
@@ -75,7 +50,6 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
   );
 
 
-  //Записать данные в базу тут
 
   createResponse(
     res,

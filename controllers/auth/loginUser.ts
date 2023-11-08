@@ -23,7 +23,6 @@ const loginUser = async (req: Express.Request, res: Express.Response) => {
 
   const { password, _id, userName, email, avatarURL } = user;
   const isPasswordCorrect = await bcrypt.compare(loginPassword, password);
-  console.log(isPasswordCorrect);
   if (!isPasswordCorrect) {
     throw HttpError(401, 'Email or password invalid');
   }
