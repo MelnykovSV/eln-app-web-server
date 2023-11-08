@@ -13,12 +13,16 @@ const generateTokens = (id: string) => {
 };
 
 const validateAccessToken = (token: string) => {
-  const result = jwt.verify(token, SECRET_ACCESS_KEY);
+  const result = jwt.verify(token, SECRET_ACCESS_KEY, {
+    expiresIn: '15min',
+  });
   return result;
 };
 
 const validateRefreshToken = (token: string) => {
-  const result = jwt.verify(token, SECRET_REFRESH_KEY);
+  const result = jwt.verify(token, SECRET_REFRESH_KEY, {
+    expiresIn: '30d',
+  });
   return result;
 };
 
