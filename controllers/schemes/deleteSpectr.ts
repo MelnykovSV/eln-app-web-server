@@ -22,11 +22,14 @@ const deleteSpectr = async (req: IExtendedRequest, res: Express.Response) => {
 
     {
       $pull: {
-        'stages.$[].attempts.$[attempt].spectra': { _id: spectrId },
+        'stages.$[stage].attempts.$[attempt].spectra': { _id: spectrId },
       },
     },
     {
-      arrayFilters: [{ 'attempt.attemptNumber': attemptNumber }],
+      arrayFilters: [
+        { 'stage._id': stageId }, // Filter for the specific stage _id
+        { 'attempt.attemptNumber': attemptNumber }, // Filter for the specific attempt number
+      ],
       new: true,
     }
   );

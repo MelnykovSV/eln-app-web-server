@@ -24,9 +24,7 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     throw HttpError(400, 'File is required');
   }
 
-
   const spectrURL = req.file.path;
-
 
   const response = await Scheme.findOneAndUpdate(
     {
@@ -35,7 +33,7 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
 
     {
       $push: {
-        'stages.$[].attempts.$[attempt].spectra': {
+        'stages.$[stage].attempts.$[attempt].spectra': {
           label: label,
           spectrUrl: spectrURL,
         },
@@ -43,13 +41,12 @@ const uploadSpectr = async (req: IExtendedRequest, res: Express.Response) => {
     },
     {
       arrayFilters: [
-        { 'attempt.attemptNumber': attemptNumber }, // Filter for the specific stage _id
+        { 'stage._id': stageId }, // Filter for the specific stage _id
+        { 'attempt.attemptNumber': attemptNumber }, // Filter for the specific attempt number
       ],
       new: true,
     }
   );
-
-
 
   createResponse(
     res,
