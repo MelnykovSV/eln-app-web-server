@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const { handleMongooseError } = require('../helpers/index');
 
-
 const defaultAttempt = {
   attemptNumber: 1,
   _id: null,
@@ -216,8 +215,8 @@ const schemeSchema = new Schema(
       required: true,
     },
     deadline: {
-      type: String,
-      default: 'none',
+      type: Date,
+      // default: new Date(),
     },
     startingMaterial: {
       type: String,

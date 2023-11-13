@@ -1,6 +1,7 @@
+import { IExtendedRequest } from '../../types';
 const { HttpError, createResponse } = require('../../helpers/index');
 const { Scheme } = require('../../models/scheme');
-import { IExtendedRequest } from '../../types';
+const dayjs = require('dayjs');
 
 const createNewScheme = async (
   req: IExtendedRequest,
@@ -21,7 +22,7 @@ const createNewScheme = async (
     startingMaterial,
     targetCompound,
     stages,
-    deadline,
+    deadline: dayjs(deadline),
     stagesNumber: stages.length,
   });
 

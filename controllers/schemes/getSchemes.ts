@@ -4,6 +4,8 @@ const {
   calculatePaginationParams,
 } = require('../../helpers/index');
 const { Scheme } = require('../../models/scheme');
+const dayjs = require('dayjs');
+
 import { IExtendedRequest } from '../../types';
 
 const getSchemes = async (req: IExtendedRequest, res: Express.Response) => {
